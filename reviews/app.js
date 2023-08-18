@@ -50,14 +50,14 @@ let currentItem = 0;
 
 // ---load initial item--
 window.addEventListener("DOMContentLoaded", function(){
-    showPerson(currentItem)
+    showPerson()
 });
 
 
 // ---function to show persons with id--
 
-function showPerson(personId){
-    const item = reviews[personId];
+function showPerson(){
+    const item = reviews[currentItem];
     img.src = item.img;
     author.textContent = item.name;
     job.textContent = item.job;
@@ -72,7 +72,7 @@ nextBtn.addEventListener("click", ()=>{
     if (currentItem > reviews.length - 1){
         currentItem = 0;
     }
-    showPerson(currentItem);
+    showPerson();
 });
 
 
@@ -81,5 +81,12 @@ prevBtn.addEventListener("click", ()=>{
     if (currentItem < 0){
         currentItem = reviews.length - 1;
     };
-    showPerson(currentItem);
+    showPerson();
+})
+
+// ---show--random person---
+
+randomBtn.addEventListener("click", ()=>{
+    currentItem = Math.floor(Math.random() * reviews.length)
+    showPerson();
 })
